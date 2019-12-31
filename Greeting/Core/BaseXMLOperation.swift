@@ -34,6 +34,10 @@ public class BaseXMLOperation: BaseOperation, XMLParserDelegate {
         self.parse(requestData)
     }
     
+    open func parserDidStartDocument(_ parser: XMLParser) {
+        
+    }
+    
     open func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         
     }

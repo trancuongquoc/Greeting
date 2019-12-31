@@ -80,7 +80,12 @@ class SendProbeOperation: UDPOperation {
         self.buildProbeMessage()
     }
     
-    override func onReplyRequest(requestID _id: UInt64?, code: Int32, replyData: Data) {
+    override func onReplyRequest(code: Int32, type: Int, replyData: Any?) {
         debugPrint("SendProbeOperation")
+        if type == 0 {
+            sendSuccessEvent(param: nil)
+        } else {
+            sendErrorEvent(param: "Error")
+        }
     }
 }

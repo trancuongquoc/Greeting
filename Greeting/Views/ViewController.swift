@@ -39,8 +39,7 @@ class ViewController: UIViewController {
     }
     
     @objc func handleBtn() {
-        let op = SendProbeOperation()
-        op.fire()
+        Engine.shared.getDiscoveryComponent()?.scanOnvifDevices()
     }
 }
 

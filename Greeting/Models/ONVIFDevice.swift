@@ -19,10 +19,10 @@ public enum ONVIFDeviceService {
     case GetSnapshot
 }
 
-public class ONVIFDevice: NSObject, XMLParserDelegate {
+public class ONVIFDevice {
     
-    var username = ""
-    var password = ""
+    private var username = ""
+    private var password = ""
     
     public var hardware: String = ""
     public var xAddr: String = ""
@@ -56,8 +56,11 @@ public class ONVIFDevice: NSObject, XMLParserDelegate {
 //        op.fire()
 //    }
     
-    public func set(username: String, password: String) {
+    public func set(username: String) {
         self.username = username
+    }
+    
+    public func set(password: String) {
         self.password = password
     }
     

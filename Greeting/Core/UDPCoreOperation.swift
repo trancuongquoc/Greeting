@@ -10,9 +10,8 @@ import Foundation
 
 open class UDPCoreOperation: BaseOperation {
     
-    public var type : Int32 = 0
-    public var tag  : UInt64 = 0
-    public var replyData : Data?
+    public var code : Int32 = 0
+    public var replyData : Any?
     
     public var theClassName: String {
         
@@ -21,10 +20,7 @@ open class UDPCoreOperation: BaseOperation {
     
     required public init() {
         super.init()
-        self.type = self.numberRequestType()
-        if let udp = Engine.shared.getComponent(type: .UDP) as? UDP{
-            self.tag = udp.getRequetsID()
-        }
+        self.code = self.numberRequestType()
     }
     
     
@@ -52,7 +48,7 @@ open class UDPCoreOperation: BaseOperation {
         fatalError("Subclasses need to implement the `buildRequest()` method.")
     }
     
-    open func onReplyRequest(requestID _id : UInt64?,code : Int32,replyData : Data){
+    open func onReplyRequest(code : Int32,type: Int,replyData : Any?){
         fatalError("Subclasses need to implement the `onReplyRequest` method.")
     }
     
@@ -76,12 +72,13 @@ open class UDPCoreOperation: BaseOperation {
                 if let data = requestData {
                     if let address = self.endpointAddress() {
                         udp.send(data, to: address, success: {
+                            self.onReplyRequest(code: self.code, type: 0, replyData: nil)
                         })
                     }
                 }
             }
         } else {
-            self.onReplyRequest(requestID: self.tag, code: self.type, replyData: self.replyData!)
+            self.onReplyRequest(code: self.code, type: 0, replyData: replyData)
         }
     }
     

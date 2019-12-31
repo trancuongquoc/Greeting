@@ -20,8 +20,10 @@ public class UDP: NSObject, Component, GCDAsyncUdpSocketDelegate {
     private var multicastAddress = "239.255.255.250"
     private var port:UInt16 = 3702
     private var receiveOperationManager : Dictionary<Int32,Array<String>>!
+    private var udp_receive_data_event_key: String!
+    private var udp_receive_probematch_event_key: String!
+    
     public  var delegate: UDPDelegate?
-    private     var msgForID                : UInt64 = 0
     
     public func componentType() -> ComponentType {
         return .UDP
@@ -42,28 +44,17 @@ public class UDP: NSObject, Component, GCDAsyncUdpSocketDelegate {
         
     }
     
-    public func getRequetsID() -> UInt64{
-        self.msgForID = self.msgForID + 1
-        return self.msgForID
-    }
-    
-    func processReply(rep : Data,reType : Int32,requestID : UInt64) {
-//        let op = ReadProbeResponseOperation()
-//            op.data = rep
-//            op.fire()
-        
+    open func processReply(rep : Any?,reType : Int32) {
         if(self.receiveOperationManager[reType] != nil){
-            debugPrint("receive Type : \(reType)")
+//            debugPrint("receive Type : \(reType)")
             for cName in self.receiveOperationManager[reType] ?? []{
                 if let aClass = NSClassFromString(cName) as? UDPCoreOperation.Type{
                     let c = aClass.init()
-                    c.tag = requestID
-                    c.type = reType
+                    c.code = reType
                     c.replyData = rep
                     c.fire()
                 }
             }
-            
         }
     }
     
@@ -117,8 +108,8 @@ public class UDP: NSObject, Component, GCDAsyncUdpSocketDelegate {
             return
         }
         
-//        print("outsocket: local port \(outSocket.localPort()), connected port \(outSocket.connectedPort())")
-//        print("insocket: local port \(inSocket.localPort()), connected port \(inSocket.connectedPort())")
+        //        print("outsocket: local port \(outSocket.localPort()), connected port \(outSocket.connectedPort())")
+        //        print("insocket: local port \(inSocket.localPort()), connected port \(inSocket.connectedPort())")
         
         if inSocket.localPort() != outSocket.localPort() {
             self.inSocketSetupConnection(port: outSocket.localPort())
@@ -167,12 +158,22 @@ public extension UDP {
         GCDAsyncUdpSocket.getHost(&host, port: &port, fromAddress: address)
         debugPrint("Message from host: ", host ?? "")
         
-        self.processReply(rep: data, reType: 2, requestID: 2)
+        Engine.shared.getEventComponent()?.trigger(eventName: EventName.core.udp_did_receive_data, information: data)
     }
     
-    //    func udpSocket(_ sock: GCDAsyncUdpSocket, didConnectToAddress address: Data) {
-    //        //        print("OutSocket didConnectToAddress")
-    //    }
+    func udpSocket(_ sock: GCDAsyncUdpSocket, didConnectToAddress address: Data) {
+        print("OutSocket didConnectToAddress")
+        udp_receive_data_event_key = Engine.shared.getEventComponent()?.listenTo(eventName: EventName.core.udp_did_receive_data, event: Event(with: { (data) in
+            let op = ReadProbeResponseOperation()
+            op.data = data as? Data
+            op.fire()
+        }))
+        
+        udp_receive_probematch_event_key = Engine.shared.getEventComponent()?.listenTo(eventName: EventName.core.did_receive_probematch, event: Event(with: { (data) in
+            self.processReply(rep: data, reType: 2)
+        }))
+        
+    }
     //
     //    func udpSocket(_ sock: GCDAsyncUdpSocket, didNotConnect error: Error?) {
     //        if let _error = error {
@@ -180,9 +181,12 @@ public extension UDP {
     //        }
     //    }
     //
-    //    func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
-    //        debugPrint("OutSocket didClose, error: ", error)
-    //    }
+        func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
+            debugPrint("OutSocket didClose, error: ", error)
+            Engine.shared.getEventComponent()?.removeEvent(with: udp_receive_data_event_key, eventId: EventName.core.udp_did_receive_data)
+            Engine.shared.getEventComponent()?.removeEvent(with: udp_receive_probematch_event_key, eventId: EventName.core.did_receive_probematch)
+
+        }
     //    func udpSocket(_ sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: Error?) {
     //        print("didNotSendDataWithTag")
     //    }

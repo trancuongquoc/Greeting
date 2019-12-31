@@ -10,11 +10,9 @@ import Foundation
 
 public struct EventName {
     public struct core {
-        public static let tcp_did_connect_to_host                  : String = "tcp_did_connect_to_host"
-        public static let tcp_status_change                        : String = "tcp_status_change"
-        public static let http_request_success                     : String = "http_request_success"
-        public static let http_request_error                       : String = "http_request_error"
-        public static let tcp_network_error                        : String = "tcp_network_error"
+        public static let udp_did_receive_data: String = "udp_did_receive_data"
+        public static let did_receive_probematch: String = "did_receive_probematch"
+        public static let did_receive_onvif_device: String = "did_receive_onvif_device"
     }
 }
 public struct Event {
@@ -67,7 +65,6 @@ open class Events : Component  {
         return key
     }
     public func listenTo(with eventName : String,event : Event){
-        print(eventName)
         let key = UUID().uuidString
         if(listeners[eventName] != nil){
             listeners[eventName]?[key] = event
@@ -112,7 +109,6 @@ open class Events : Component  {
     // + eventName: Matching listener eventNames will fire when this is called
     // + information: pass values to your listeners
     public func trigger(eventName : String, information : Any? = nil) {
-        print(eventName)
         if self.listeners == nil {
             return
         }

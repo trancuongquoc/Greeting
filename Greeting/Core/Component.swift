@@ -14,6 +14,7 @@ import Foundation
     case WSDiscovery
     case Operations
     case UDP
+    case ONVIFDevice
 }
 
 @objc public protocol Component {

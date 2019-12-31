@@ -62,6 +62,19 @@ open class Engine {
         
     }
     
+    open func stopComponents() {
+            for component in self.components.sorted(by: { (a, b) -> Bool in
+                return (a.value.priority?() ?? 1000).compare(b.value.priority?() ?? 1000) == ComparisonResult.orderedDescending
+            }) {
+                component.value.stop()
+            }
+            self.removeComponent()
+    }
+    
+    open func removeComponent(){
+        
+    }
+    
     open func getComponent(type : ComponentType) -> Component? {
         
         if let component = self.components[type]{
