@@ -9,36 +9,37 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    var person: Person!
+    
+    lazy var btn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.titleLabel?.text = "Send Probe"
+        btn.setTitleColor(.black, for: .normal)
+        btn.backgroundColor = .purple
+        btn.titleLabel?.textAlignment = .left
+        btn.addTarget(self, action: #selector(handleBtn), for: .touchUpInside)
+        self.view.addSubview(btn)
+        return btn
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        print("Welcome to ViewController")
-        getPersonData()
+        
+        self.view.backgroundColor = .white
+        
+        btn.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 32).isActive = true
+        btn.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
+        btn.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        btn.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
-
-    func getPersonData() {
-        let op = GetPersonDataOperation()
-        op.addSuccessEvent(event: Event(with: { (reply) in
-            if let persons = reply as? [Person] {
-                for person in persons {
-                    print(person.name)
-                }
-                
-                ViewComponent.shareInstance.showGreetingView(person: persons.first!)
-            }
-            
-        }))
-        
-        op.addErrorEvent(event: Event(with: { (error) in
-            if let err = error as? String {
-                print(err)
-            }
-        }))
-        
+    }
+    
+    @objc func handleBtn() {
+        let op = SendProbeOperation()
         op.fire()
     }
 }

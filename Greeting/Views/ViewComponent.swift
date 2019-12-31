@@ -8,12 +8,15 @@
 
 import UIKit
 
-class ViewComponent {
+class ViewComponent: Component {
     
-    public static let shareInstance : ViewComponent = {
-        let instance = ViewComponent()
-        return instance
-    }()
+    func componentType() -> ComponentType {
+        return ComponentType.View
+    }
+    
+    func stop() {
+        
+    }
     
     var mainWindow : UIWindow? = UIApplication.shared.keyWindow
 
@@ -45,14 +48,4 @@ class ViewComponent {
         return nil
     }
 
-    
-    func showGreetingView(person: Person) {
-        let title = "Welcome"
-        let msg = "Hello " + person.name
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Thanks", style: .default, handler: nil))
-        
-        self.getTopView()?.present(alert, animated: true, completion: nil)
-    }
 }

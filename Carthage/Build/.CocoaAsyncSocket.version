@@ -1,0 +1,9 @@
+{
+  "commitish" : "b179ea4013e94e31e6e637955e520ea4fb9d1b13",
+  "iOS" : [
+    {
+      "name" : "CocoaAsyncSocket",
+      "hash" : "834b36e115abe55507ce045d91f135749694b7dfa3baaa30e811fb805e53c842"
+    }
+  ]
+}
