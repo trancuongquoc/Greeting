@@ -85,7 +85,7 @@ class SendProbeOperation: UDPOperation {
         if type == 0 {
             sendSuccessEvent(param: nil)
         } else {
-            sendErrorEvent(param: "Error")
+            sendErrorEvent(param: nil)
         }
     }
 }

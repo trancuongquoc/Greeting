@@ -169,7 +169,7 @@ public extension UDP {
             op.fire()
         }))
         
-        udp_receive_probematch_event_key = Engine.shared.getEventComponent()?.listenTo(eventName: EventName.core.did_receive_probematch, event: Event(with: { (data) in
+        udp_receive_probematch_event_key = Engine.shared.getEventComponent()?.listenTo(eventName: EventName.core.udp_did_receive_probematch, event: Event(with: { (data) in
             self.processReply(rep: data, reType: 2)
         }))
         
@@ -184,7 +184,7 @@ public extension UDP {
         func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
             debugPrint("OutSocket didClose, error: ", error)
             Engine.shared.getEventComponent()?.removeEvent(with: udp_receive_data_event_key, eventId: EventName.core.udp_did_receive_data)
-            Engine.shared.getEventComponent()?.removeEvent(with: udp_receive_probematch_event_key, eventId: EventName.core.did_receive_probematch)
+            Engine.shared.getEventComponent()?.removeEvent(with: udp_receive_probematch_event_key, eventId: EventName.core.udp_did_receive_probematch)
 
         }
     //    func udpSocket(_ sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: Error?) {

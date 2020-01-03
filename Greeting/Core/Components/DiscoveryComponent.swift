@@ -33,7 +33,7 @@ public class DiscoveryComponent: Component {
         let op = SendProbeOperation()
         op.fire()
         
-        Engine.shared.getEventComponent()?.listenTo(with: EventName.core.did_receive_onvif_device, event: Event(with: { (data) in
+        Engine.shared.getEventComponent()?.listenTo(with: EventName.core.did_recognize_onvif_device, event: Event(with: { (data) in
             if let device = data as? ONVIFDevice {
                 print(device.hardware)
             }

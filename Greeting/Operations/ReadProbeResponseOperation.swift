@@ -32,7 +32,7 @@ class ReadProbeResponseOperation: BaseXMLOperation {
                     pm.messageID == probeMatch.messageID
                 }) {
                     Engine.shared.getDiscoveryComponent()?.probeMatches.append(probeMatch)
-                    Engine.shared.getEventComponent()?.trigger(eventName: EventName.core.did_receive_probematch, information: probeMatch)
+                    Engine.shared.getEventComponent()?.trigger(eventName: EventName.core.udp_did_receive_probematch, information: probeMatch)
                 }
                 
             }

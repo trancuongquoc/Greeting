@@ -47,5 +47,22 @@ class ViewComponent: Component {
         }
         return nil
     }
+    
+    func showLoadingView(title:String? = nil)
+    {
+//        guard let topView = self.getTopView() else { return }
+//        if(title != nil){
+//            let hub =  MBProgressHUD.showAdded(to: topView.view, animated: true)
+//            hub.label.text = title ?? ""
+//        }else{
+//            MBProgressHUD.showAdded(to: topView.view, animated: true)
+//        }
+        
+    }
+    
+    func hideLoadingView(){
+//        guard let topView = self.getTopView() else { return }
+//        MBProgressHUD.hide(for: topView.view, animated: true)
+    }
 
 }

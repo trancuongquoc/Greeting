@@ -27,7 +27,7 @@ class ReceiveOnvifDeviceOperation: UDPOperation {
                     Engine.shared.getDeviceComponent()?.devices.append(device)
                 }
                 
-                Engine.shared.getEventComponent()?.trigger(eventName: EventName.core.did_receive_onvif_device, information: device)
+                Engine.shared.getEventComponent()?.trigger(eventName: EventName.core.did_recognize_onvif_device, information: device)
             }
         } else {
             
