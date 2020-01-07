@@ -44,7 +44,7 @@ class UDPDelegateRegister: OnvifUDPDelegate {
     override func registerReceiveOperation() {
         super.registerReceiveOperation()
         if let udp = Engine.shared.getComponent(type: .UDP) as? UDP {
-            udp.registerReceiveOperation(operationType: 2, operationClassName: ReceiveOnvifDeviceOperation.getClassName())
+            udp.registerReceiveOperation(operationType: PROBE_MATCH, operationClassName: ReceiveOnvifDeviceOperation.getClassName())
         }
     }
 }

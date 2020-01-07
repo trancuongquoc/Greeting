@@ -10,7 +10,7 @@ import Foundation
 
 open class UDPCoreOperation: BaseOperation {
     
-    public var code : Int32 = 0
+    public var type : String = ""
     public var replyData : Any?
     
     public var theClassName: String {
@@ -20,7 +20,7 @@ open class UDPCoreOperation: BaseOperation {
     
     required public init() {
         super.init()
-        self.code = self.numberRequestType()
+        self.type = self.requestType()
     }
     
     
@@ -40,7 +40,7 @@ open class UDPCoreOperation: BaseOperation {
         return 10
     }
     
-    open func numberRequestType() -> Int32{
+    open func requestType() -> String{
         fatalError("Subclasses need to implement the `numberRequestType()` method.")
     }
     
@@ -48,7 +48,9 @@ open class UDPCoreOperation: BaseOperation {
         fatalError("Subclasses need to implement the `buildRequest()` method.")
     }
     
-    open func onReplyRequest(code : Int32,type: Int,replyData : Any?){
+    //replyType 0 == success
+    //replyType 1 == fail
+    open func onReplyRequest(requestType : String,replyType: Int,replyData : Any?){
         fatalError("Subclasses need to implement the `onReplyRequest` method.")
     }
     
@@ -71,14 +73,16 @@ open class UDPCoreOperation: BaseOperation {
             if let udp = Engine.shared.getComponent(type: .UDP) as? UDP {
                 if let data = requestData {
                     if let address = self.endpointAddress() {
-                        udp.send(data, to: address, success: {
-                            self.onReplyRequest(code: self.code, type: 0, replyData: nil)
-                        })
+                        if self.type == PROBE {
+                            udp.sendProbe(data, to: address) {
+                                self.onReplyRequest(requestType: self.type, replyType: 0, replyData: nil)
+                            }
+                        }
                     }
                 }
             }
         } else {
-            self.onReplyRequest(code: self.code, type: 0, replyData: replyData)
+            self.onReplyRequest(requestType: self.type, replyType: 0, replyData: replyData)
         }
     }
     

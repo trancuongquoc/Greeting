@@ -19,7 +19,7 @@ public class UDP: NSObject, Component, GCDAsyncUdpSocketDelegate {
     private var inSocket: GCDAsyncUdpSocket!
     private var multicastAddress = "239.255.255.250"
     private var port:UInt16 = 3702
-    private var receiveOperationManager : Dictionary<Int32,Array<String>>!
+    private var receiveOperationManager : Dictionary<String,Array<String>>!
     private var udp_receive_data_event_key: String!
     private var udp_receive_probematch_event_key: String!
     
@@ -32,7 +32,7 @@ public class UDP: NSObject, Component, GCDAsyncUdpSocketDelegate {
     public init(delegate : UDPDelegate?) {
         super.init()
         self.delegate = delegate
-        self.receiveOperationManager = Dictionary<Int32,Array<String>>()
+        self.receiveOperationManager = Dictionary<String,Array<String>>()
         
     }
     
@@ -44,13 +44,13 @@ public class UDP: NSObject, Component, GCDAsyncUdpSocketDelegate {
         
     }
     
-    open func processReply(rep : Any?,reType : Int32) {
+    open func processReply(rep : Any?,reType : String) {
         if(self.receiveOperationManager[reType] != nil){
 //            debugPrint("receive Type : \(reType)")
             for cName in self.receiveOperationManager[reType] ?? []{
                 if let aClass = NSClassFromString(cName) as? UDPCoreOperation.Type{
                     let c = aClass.init()
-                    c.code = reType
+                    c.type = reType
                     c.replyData = rep
                     c.fire()
                 }
@@ -58,7 +58,7 @@ public class UDP: NSObject, Component, GCDAsyncUdpSocketDelegate {
         }
     }
     
-    public func registerReceiveOperation(operationType : Int32,operationClassName : String){
+    public func registerReceiveOperation(operationType : String,operationClassName : String){
         if(self.receiveOperationManager != nil){
             if(self.receiveOperationManager[operationType] == nil){
                 self.receiveOperationManager[operationType] = [operationClassName]
@@ -133,7 +133,7 @@ public class UDP: NSObject, Component, GCDAsyncUdpSocketDelegate {
     }
     
     
-    func send(_ data: Data, to address: String, success:(()->())) {
+    func sendProbe(_ data: Data, to address: String, success:(()->())) {
         //        print("data send to: ", socket.connectedHost(), " ,on: ", socket.connectedPort(), " ,from: ", socket.localHost(), " ,on: ", socket.localPort())
         outSocketSetupConnection {
             if outSocket != nil {
@@ -157,20 +157,20 @@ public extension UDP {
         var port: UInt16 = 0
         GCDAsyncUdpSocket.getHost(&host, port: &port, fromAddress: address)
         debugPrint("Message from host: ", host ?? "")
-        
-        Engine.shared.getEventComponent()?.trigger(eventName: EventName.core.udp_did_receive_data, information: data)
+
+        Engine.shared.getEventComponent()?.trigger(eventName: EventName.udp.udp_did_receive_data, information: data)
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didConnectToAddress address: Data) {
         print("OutSocket didConnectToAddress")
-        udp_receive_data_event_key = Engine.shared.getEventComponent()?.listenTo(eventName: EventName.core.udp_did_receive_data, event: Event(with: { (data) in
+        udp_receive_data_event_key = Engine.shared.getEventComponent()?.listenTo(eventName: EventName.udp.udp_did_receive_data, event: Event(with: { (data) in
             let op = ReadProbeResponseOperation()
             op.data = data as? Data
             op.fire()
         }))
         
-        udp_receive_probematch_event_key = Engine.shared.getEventComponent()?.listenTo(eventName: EventName.core.udp_did_receive_probematch, event: Event(with: { (data) in
-            self.processReply(rep: data, reType: 2)
+        udp_receive_probematch_event_key = Engine.shared.getEventComponent()?.listenTo(eventName: EventName.udp.udp_did_receive_probematch, event: Event(with: { (data) in
+            self.processReply(rep: data, reType: PROBE_MATCH)
         }))
         
     }
@@ -183,14 +183,14 @@ public extension UDP {
     //
         func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
             debugPrint("OutSocket didClose, error: ", error)
-            Engine.shared.getEventComponent()?.removeEvent(with: udp_receive_data_event_key, eventId: EventName.core.udp_did_receive_data)
-            Engine.shared.getEventComponent()?.removeEvent(with: udp_receive_probematch_event_key, eventId: EventName.core.udp_did_receive_probematch)
+            Engine.shared.getEventComponent()?.removeEvent(with: udp_receive_data_event_key, eventId: EventName.udp.udp_did_receive_data)
+            Engine.shared.getEventComponent()?.removeEvent(with: udp_receive_probematch_event_key, eventId: EventName.udp.udp_did_receive_probematch)
 
         }
     //    func udpSocket(_ sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: Error?) {
     //        print("didNotSendDataWithTag")
     //    }
-    //    func udpSocket(_ sock: GCDAsyncUdpSocket, didSendDataWithTag tag: Int) {
-    //        print("OutSocket didSendDataWithTag", tag)
-    //    }
+        func udpSocket(_ sock: GCDAsyncUdpSocket, didSendDataWithTag tag: Int) {
+            print("OutSocket didSendDataWithTag", tag)
+        }
 }

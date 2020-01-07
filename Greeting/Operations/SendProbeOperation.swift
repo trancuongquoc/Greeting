@@ -17,8 +17,8 @@ class SendProbeOperation: UDPOperation {
         return UUID.init().uuidString
     }
     
-    override func numberRequestType() -> Int32 {
-        return 1
+    override func requestType() -> String {
+        return PROBE
     }
     
     override func endpointAddress() -> String? {
@@ -80,9 +80,9 @@ class SendProbeOperation: UDPOperation {
         self.buildProbeMessage()
     }
     
-    override func onReplyRequest(code: Int32, type: Int, replyData: Any?) {
+    override func onReplyRequest(requestType: String, replyType: Int, replyData: Any?) {
         debugPrint("SendProbeOperation")
-        if type == 0 {
+        if replyType == 0 {
             sendSuccessEvent(param: nil)
         } else {
             sendErrorEvent(param: nil)

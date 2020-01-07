@@ -9,10 +9,10 @@
 import Foundation
 
 public struct EventName {
-    public struct core {
+    public struct udp {
         public static let udp_did_receive_data: String = "udp_did_receive_data"
         public static let udp_did_receive_probematch: String = "udp_did_receive_probematch"
-        public static let did_recognize_onvif_device: String = "did_recognize_onvif_device"
+        public static let udp_did_recognize_onvif_device: String = "udp_did_recognize_onvif_device"
     }
 }
 public struct Event {

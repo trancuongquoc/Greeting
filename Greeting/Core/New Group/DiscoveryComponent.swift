@@ -30,13 +30,15 @@ public class DiscoveryComponent: Component {
     }
     
     public func scanOnvifDevices() {
+        Engine.shared.getViewComponent()?.showLoadingView()
         let op = SendProbeOperation()
         op.fire()
         
-        Engine.shared.getEventComponent()?.listenTo(with: EventName.core.did_recognize_onvif_device, event: Event(with: { (data) in
+        Engine.shared.getEventComponent()?.listenTo(with: EventName.udp.udp_did_recognize_onvif_device, event: Event(with: { (data) in
             if let device = data as? ONVIFDevice {
                 print(device.hardware)
             }
+            Engine.shared.getViewComponent()?.hideLoadingView()
         }))
         
 //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {

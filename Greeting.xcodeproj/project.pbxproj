@@ -7,29 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		52131E1A23B8324300994AA2 /* OperationManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52131E1923B8324300994AA2 /* OperationManage.swift */; };
 		52131E1C23B832F400994AA2 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52131E1B23B832F400994AA2 /* BaseOperation.swift */; };
-		52131E1E23B8357700994AA2 /* UDP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52131E1D23B8357700994AA2 /* UDP.swift */; };
 		5216CBE523B4A6F10076BD61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5216CBE423B4A6F10076BD61 /* AppDelegate.swift */; };
 		5216CBE923B4A6F10076BD61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5216CBE823B4A6F10076BD61 /* ViewController.swift */; };
 		5216CBEE23B4A6F30076BD61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5216CBED23B4A6F30076BD61 /* Assets.xcassets */; };
 		5216CBF123B4A6F30076BD61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5216CBEF23B4A6F30076BD61 /* LaunchScreen.storyboard */; };
-		5230188B23BB043000585143 /* DeviceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5230188A23BB043000585143 /* DeviceComponent.swift */; };
 		5232CDF823B5ECDC00F21272 /* Registrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5232CDF723B5ECDC00F21272 /* Registrations.swift */; };
 		5232CDFA23B60B9F00F21272 /* EngineExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5232CDF923B60B9F00F21272 /* EngineExtension.swift */; };
-		52362AE523B7029100472319 /* DiscoveryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52362AE423B7029100472319 /* DiscoveryComponent.swift */; };
 		52362AE823B7047B00472319 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52362AE723B7047B00472319 /* CocoaAsyncSocket.framework */; };
 		52362AE923B7047B00472319 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 52362AE723B7047B00472319 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5286571F23BB5039003DDDEC /* ReceiveOnvifDevciesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5286571E23BB5039003DDDEC /* ReceiveOnvifDevciesOperation.swift */; };
 		5287A2E023B5AA9B00114D20 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287A2DF23B5AA9B00114D20 /* Engine.swift */; };
 		5287A2E223B5AAEC00114D20 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287A2E123B5AAEC00114D20 /* Component.swift */; };
 		528F2BB823B4AB12007890DF /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F2BB723B4AB12007890DF /* Events.swift */; };
-		528F2BBA23B4B0D9007890DF /* ViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F2BB923B4B0D9007890DF /* ViewComponent.swift */; };
 		528FA45A23B9E57D009D1BA6 /* ReadProbeResponseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528FA45923B9E57D009D1BA6 /* ReadProbeResponseOperation.swift */; };
 		528FA45C23B9E654009D1BA6 /* BaseXMLOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528FA45B23B9E654009D1BA6 /* BaseXMLOperation.swift */; };
 		52931CCA23B99A2400F0DB0F /* UDPCoreOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52931CC923B99A2400F0DB0F /* UDPCoreOperation.swift */; };
 		52931CCC23B9A02100F0DB0F /* SendProbeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52931CCB23B9A02100F0DB0F /* SendProbeOperation.swift */; };
 		52EF6EA923B9F88B00929609 /* UDPOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF6EA823B9F88B00929609 /* UDPOperation.swift */; };
+		52F55BFB23C466C100E34F00 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55BFA23C466C100E34F00 /* Shared.swift */; };
+		52F55C0B23C476EF00E34F00 /* UDP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C0423C476EE00E34F00 /* UDP.swift */; };
+		52F55C0C23C476EF00E34F00 /* DeviceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C0523C476EE00E34F00 /* DeviceComponent.swift */; };
+		52F55C0D23C476EF00E34F00 /* ViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C0623C476EE00E34F00 /* ViewComponent.swift */; };
+		52F55C0E23C476EF00E34F00 /* OperationManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C0723C476EE00E34F00 /* OperationManage.swift */; };
+		52F55C0F23C476EF00E34F00 /* DiscoveryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C0823C476EE00E34F00 /* DiscoveryComponent.swift */; };
 		52F86DD923B70CD500CBAB30 /* ONVIFDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F86DD523B70CD400CBAB30 /* ONVIFDevice.swift */; };
 		52F86DDA23B70CD500CBAB30 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F86DD623B70CD400CBAB30 /* Profile.swift */; };
 		52F86DDB23B70CD500CBAB30 /* ProbeMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F86DD723B70CD400CBAB30 /* ProbeMatch.swift */; };
@@ -51,30 +52,31 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		52131E1923B8324300994AA2 /* OperationManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationManage.swift; sourceTree = "<group>"; };
 		52131E1B23B832F400994AA2 /* BaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
-		52131E1D23B8357700994AA2 /* UDP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDP.swift; sourceTree = "<group>"; };
 		5216CBE123B4A6F10076BD61 /* Greeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Greeting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5216CBE423B4A6F10076BD61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5216CBE823B4A6F10076BD61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5216CBED23B4A6F30076BD61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5216CBF023B4A6F30076BD61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5216CBF223B4A6F30076BD61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5230188A23BB043000585143 /* DeviceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceComponent.swift; sourceTree = "<group>"; };
 		5232CDF723B5ECDC00F21272 /* Registrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registrations.swift; sourceTree = "<group>"; };
 		5232CDF923B60B9F00F21272 /* EngineExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineExtension.swift; sourceTree = "<group>"; };
-		52362AE423B7029100472319 /* DiscoveryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryComponent.swift; sourceTree = "<group>"; };
 		52362AE723B7047B00472319 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		5286571E23BB5039003DDDEC /* ReceiveOnvifDevciesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveOnvifDevciesOperation.swift; sourceTree = "<group>"; };
 		5287A2DF23B5AA9B00114D20 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		5287A2E123B5AAEC00114D20 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		528F2BB723B4AB12007890DF /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
-		528F2BB923B4B0D9007890DF /* ViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponent.swift; sourceTree = "<group>"; };
 		528FA45923B9E57D009D1BA6 /* ReadProbeResponseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadProbeResponseOperation.swift; sourceTree = "<group>"; };
 		528FA45B23B9E654009D1BA6 /* BaseXMLOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXMLOperation.swift; sourceTree = "<group>"; };
 		52931CC923B99A2400F0DB0F /* UDPCoreOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDPCoreOperation.swift; sourceTree = "<group>"; };
 		52931CCB23B9A02100F0DB0F /* SendProbeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendProbeOperation.swift; sourceTree = "<group>"; };
 		52EF6EA823B9F88B00929609 /* UDPOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDPOperation.swift; sourceTree = "<group>"; };
+		52F55BFA23C466C100E34F00 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		52F55C0423C476EE00E34F00 /* UDP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDP.swift; sourceTree = "<group>"; };
+		52F55C0523C476EE00E34F00 /* DeviceComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceComponent.swift; sourceTree = "<group>"; };
+		52F55C0623C476EE00E34F00 /* ViewComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewComponent.swift; sourceTree = "<group>"; };
+		52F55C0723C476EE00E34F00 /* OperationManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationManage.swift; sourceTree = "<group>"; };
+		52F55C0823C476EE00E34F00 /* DiscoveryComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryComponent.swift; sourceTree = "<group>"; };
 		52F86DD523B70CD400CBAB30 /* ONVIFDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ONVIFDevice.swift; sourceTree = "<group>"; };
 		52F86DD623B70CD400CBAB30 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		52F86DD723B70CD400CBAB30 /* ProbeMatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbeMatch.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				5216CBE423B4A6F10076BD61 /* AppDelegate.swift */,
+				52F55BFA23C466C100E34F00 /* Shared.swift */,
 				5244A79523BAEF6200EC9289 /* Core */,
 				528F2BBB23B4B52F007890DF /* Models */,
 				528F2BBC23B4B537007890DF /* Operations */,
@@ -124,18 +127,6 @@
 				5216CBF223B4A6F30076BD61 /* Info.plist */,
 			);
 			path = Greeting;
-			sourceTree = "<group>";
-		};
-		5230188923BB03C100585143 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				52131E1D23B8357700994AA2 /* UDP.swift */,
-				52131E1923B8324300994AA2 /* OperationManage.swift */,
-				52362AE423B7029100472319 /* DiscoveryComponent.swift */,
-				528F2BB923B4B0D9007890DF /* ViewComponent.swift */,
-				5230188A23BB043000585143 /* DeviceComponent.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		52362AE623B7047B00472319 /* Frameworks */ = {
@@ -157,7 +148,7 @@
 				528FA45B23B9E654009D1BA6 /* BaseXMLOperation.swift */,
 				52931CC923B99A2400F0DB0F /* UDPCoreOperation.swift */,
 				52EF6EA823B9F88B00929609 /* UDPOperation.swift */,
-				5230188923BB03C100585143 /* Components */,
+				52F55C1223C4770900E34F00 /* New Group */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -197,6 +188,18 @@
 				5216CBE823B4A6F10076BD61 /* ViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		52F55C1223C4770900E34F00 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				52F55C0523C476EE00E34F00 /* DeviceComponent.swift */,
+				52F55C0823C476EE00E34F00 /* DiscoveryComponent.swift */,
+				52F55C0723C476EE00E34F00 /* OperationManage.swift */,
+				52F55C0623C476EE00E34F00 /* ViewComponent.swift */,
+				52F55C0423C476EE00E34F00 /* UDP.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,21 +274,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				5286571F23BB5039003DDDEC /* ReceiveOnvifDevciesOperation.swift in Sources */,
+				52F55C0E23C476EF00E34F00 /* OperationManage.swift in Sources */,
 				528FA45A23B9E57D009D1BA6 /* ReadProbeResponseOperation.swift in Sources */,
 				5287A2E223B5AAEC00114D20 /* Component.swift in Sources */,
 				5232CDFA23B60B9F00F21272 /* EngineExtension.swift in Sources */,
 				52931CCC23B9A02100F0DB0F /* SendProbeOperation.swift in Sources */,
+				52F55C0F23C476EF00E34F00 /* DiscoveryComponent.swift in Sources */,
+				52F55C0B23C476EF00E34F00 /* UDP.swift in Sources */,
 				5232CDF823B5ECDC00F21272 /* Registrations.swift in Sources */,
-				5230188B23BB043000585143 /* DeviceComponent.swift in Sources */,
-				52131E1A23B8324300994AA2 /* OperationManage.swift in Sources */,
-				52362AE523B7029100472319 /* DiscoveryComponent.swift in Sources */,
+				52F55BFB23C466C100E34F00 /* Shared.swift in Sources */,
 				52931CCA23B99A2400F0DB0F /* UDPCoreOperation.swift in Sources */,
-				528F2BBA23B4B0D9007890DF /* ViewComponent.swift in Sources */,
 				52F86DDA23B70CD500CBAB30 /* Profile.swift in Sources */,
+				52F55C0D23C476EF00E34F00 /* ViewComponent.swift in Sources */,
+				52F55C0C23C476EF00E34F00 /* DeviceComponent.swift in Sources */,
 				528FA45C23B9E654009D1BA6 /* BaseXMLOperation.swift in Sources */,
 				52F86DD923B70CD500CBAB30 /* ONVIFDevice.swift in Sources */,
 				5216CBE923B4A6F10076BD61 /* ViewController.swift in Sources */,
-				52131E1E23B8357700994AA2 /* UDP.swift in Sources */,
 				52131E1C23B832F400994AA2 /* BaseOperation.swift in Sources */,
 				52EF6EA923B9F88B00929609 /* UDPOperation.swift in Sources */,
 				52F86DDB23B70CD500CBAB30 /* ProbeMatch.swift in Sources */,

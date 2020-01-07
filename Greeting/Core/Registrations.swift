@@ -13,6 +13,5 @@ open class Registrations: NSObject {
     open func registerComponents() {
         Engine.shared.registerComponent(component: Events())
         Engine.shared.registerComponent(component: OperationManage())
-
     }
 }

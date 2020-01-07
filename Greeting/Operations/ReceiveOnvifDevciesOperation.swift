@@ -9,12 +9,12 @@
 import Foundation
 
 class ReceiveOnvifDeviceOperation: UDPOperation {
-    override func numberRequestType() -> Int32 {
-        return 2
+    override func requestType() -> String {
+        return PROBE_MATCH
     }
-    
-    override func onReplyRequest(code: Int32,type: Int, replyData: Any?) {
-        if type == 0 {
+
+    override func onReplyRequest(requestType: String ,replyType: Int, replyData: Any?) {
+        if replyType == 0 {
             if let probeMatch = replyData as? ProbeMatch {
                 let device = ONVIFDevice()
                 device.hardware = probeMatch.hardware
@@ -27,7 +27,7 @@ class ReceiveOnvifDeviceOperation: UDPOperation {
                     Engine.shared.getDeviceComponent()?.devices.append(device)
                 }
                 
-                Engine.shared.getEventComponent()?.trigger(eventName: EventName.core.did_recognize_onvif_device, information: device)
+                Engine.shared.getEventComponent()?.trigger(eventName: EventName.udp.udp_did_recognize_onvif_device, information: device)
             }
         } else {
             
