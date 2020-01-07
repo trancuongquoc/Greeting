@@ -61,9 +61,10 @@ class ViewController: UIViewController {
     }
     
     @objc func handleBtn1() {
-        if let device = Engine.shared.getDeviceComponent()?.devices.first {
+//        if let device = Engine.shared.getDeviceComponent()?.devices.first {
 //            Engine.shared.getDeviceComponent()?.getSystemDateAndTime(device: device)
-        }
+//        }
+        Engine.shared.getDeviceComponent()?.getTime()
     }
 
 }

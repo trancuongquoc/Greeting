@@ -15,6 +15,7 @@ class ComponentRegister: Registrations {
         Engine.shared.registerComponent(component: DiscoveryComponent())
         Engine.shared.registerComponent(component: UDP(delegate: UDPDelegateRegister()))
         Engine.shared.registerComponent(component: DeviceComponent())
+        Engine.shared.registerComponent(component: HTTP())
     }
 }
 

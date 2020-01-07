@@ -27,5 +27,10 @@ public class DeviceComponent: Component {
         return self.devices
     }
 
+    func getTime() {
+        let op = GetSystemDateAndTimeOperation()
+        op.device = devices.first
+        op.fire()
+    }
     
 }

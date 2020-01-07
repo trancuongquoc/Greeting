@@ -15,6 +15,7 @@ import Foundation
     case Operations
     case UDP
     case ONVIFDevice
+    case HTTP
 }
 
 @objc public protocol Component {

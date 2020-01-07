@@ -31,6 +31,10 @@
 		52F55C0D23C476EF00E34F00 /* ViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C0623C476EE00E34F00 /* ViewComponent.swift */; };
 		52F55C0E23C476EF00E34F00 /* OperationManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C0723C476EE00E34F00 /* OperationManage.swift */; };
 		52F55C0F23C476EF00E34F00 /* DiscoveryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C0823C476EE00E34F00 /* DiscoveryComponent.swift */; };
+		52F55C1423C4790C00E34F00 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C1323C4790C00E34F00 /* HTTP.swift */; };
+		52F55C1623C47DD400E34F00 /* HTTPCoreOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C1523C47DD400E34F00 /* HTTPCoreOperation.swift */; };
+		52F55C1823C485F000E34F00 /* ONVIFServiceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C1723C485F000E34F00 /* ONVIFServiceOperation.swift */; };
+		52F55C1A23C4877500E34F00 /* GetSystemDateAndTimeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F55C1923C4877500E34F00 /* GetSystemDateAndTimeOperation.swift */; };
 		52F86DD923B70CD500CBAB30 /* ONVIFDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F86DD523B70CD400CBAB30 /* ONVIFDevice.swift */; };
 		52F86DDA23B70CD500CBAB30 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F86DD623B70CD400CBAB30 /* Profile.swift */; };
 		52F86DDB23B70CD500CBAB30 /* ProbeMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F86DD723B70CD400CBAB30 /* ProbeMatch.swift */; };
@@ -77,6 +81,10 @@
 		52F55C0623C476EE00E34F00 /* ViewComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewComponent.swift; sourceTree = "<group>"; };
 		52F55C0723C476EE00E34F00 /* OperationManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationManage.swift; sourceTree = "<group>"; };
 		52F55C0823C476EE00E34F00 /* DiscoveryComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryComponent.swift; sourceTree = "<group>"; };
+		52F55C1323C4790C00E34F00 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		52F55C1523C47DD400E34F00 /* HTTPCoreOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCoreOperation.swift; sourceTree = "<group>"; };
+		52F55C1723C485F000E34F00 /* ONVIFServiceOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ONVIFServiceOperation.swift; sourceTree = "<group>"; };
+		52F55C1923C4877500E34F00 /* GetSystemDateAndTimeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSystemDateAndTimeOperation.swift; sourceTree = "<group>"; };
 		52F86DD523B70CD400CBAB30 /* ONVIFDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ONVIFDevice.swift; sourceTree = "<group>"; };
 		52F86DD623B70CD400CBAB30 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		52F86DD723B70CD400CBAB30 /* ProbeMatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbeMatch.swift; sourceTree = "<group>"; };
@@ -148,7 +156,7 @@
 				528FA45B23B9E654009D1BA6 /* BaseXMLOperation.swift */,
 				52931CC923B99A2400F0DB0F /* UDPCoreOperation.swift */,
 				52EF6EA823B9F88B00929609 /* UDPOperation.swift */,
-				52F55C1223C4770900E34F00 /* New Group */,
+				52F55C1223C4770900E34F00 /* Components */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -170,6 +178,7 @@
 				52931CCB23B9A02100F0DB0F /* SendProbeOperation.swift */,
 				528FA45923B9E57D009D1BA6 /* ReadProbeResponseOperation.swift */,
 				5286571E23BB5039003DDDEC /* ReceiveOnvifDevciesOperation.swift */,
+				52F55C1923C4877500E34F00 /* GetSystemDateAndTimeOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -190,7 +199,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		52F55C1223C4770900E34F00 /* New Group */ = {
+		52F55C1223C4770900E34F00 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				52F55C0523C476EE00E34F00 /* DeviceComponent.swift */,
@@ -198,8 +207,11 @@
 				52F55C0723C476EE00E34F00 /* OperationManage.swift */,
 				52F55C0623C476EE00E34F00 /* ViewComponent.swift */,
 				52F55C0423C476EE00E34F00 /* UDP.swift */,
+				52F55C1323C4790C00E34F00 /* HTTP.swift */,
+				52F55C1523C47DD400E34F00 /* HTTPCoreOperation.swift */,
+				52F55C1723C485F000E34F00 /* ONVIFServiceOperation.swift */,
 			);
-			path = "New Group";
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,16 +285,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52F55C1A23C4877500E34F00 /* GetSystemDateAndTimeOperation.swift in Sources */,
 				5286571F23BB5039003DDDEC /* ReceiveOnvifDevciesOperation.swift in Sources */,
 				52F55C0E23C476EF00E34F00 /* OperationManage.swift in Sources */,
+				52F55C1623C47DD400E34F00 /* HTTPCoreOperation.swift in Sources */,
 				528FA45A23B9E57D009D1BA6 /* ReadProbeResponseOperation.swift in Sources */,
 				5287A2E223B5AAEC00114D20 /* Component.swift in Sources */,
 				5232CDFA23B60B9F00F21272 /* EngineExtension.swift in Sources */,
 				52931CCC23B9A02100F0DB0F /* SendProbeOperation.swift in Sources */,
+				52F55C1823C485F000E34F00 /* ONVIFServiceOperation.swift in Sources */,
 				52F55C0F23C476EF00E34F00 /* DiscoveryComponent.swift in Sources */,
 				52F55C0B23C476EF00E34F00 /* UDP.swift in Sources */,
 				5232CDF823B5ECDC00F21272 /* Registrations.swift in Sources */,
 				52F55BFB23C466C100E34F00 /* Shared.swift in Sources */,
+				52F55C1423C4790C00E34F00 /* HTTP.swift in Sources */,
 				52931CCA23B99A2400F0DB0F /* UDPCoreOperation.swift in Sources */,
 				52F86DDA23B70CD500CBAB30 /* Profile.swift in Sources */,
 				52F55C0D23C476EF00E34F00 /* ViewComponent.swift in Sources */,
