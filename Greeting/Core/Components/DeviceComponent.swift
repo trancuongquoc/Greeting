@@ -27,9 +27,9 @@ public class DeviceComponent: Component {
         return self.devices
     }
 
-    func getTime() {
-        let op = GetSystemDateAndTimeOperation()
-        op.device = devices.first
+    func getProfiles(for device: ONVIFDevice) {
+        let op = GetProfilesOperation()
+        op.device = device
         op.fire()
     }
     

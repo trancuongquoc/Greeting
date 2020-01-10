@@ -64,7 +64,10 @@ class ViewController: UIViewController {
 //        if let device = Engine.shared.getDeviceComponent()?.devices.first {
 //            Engine.shared.getDeviceComponent()?.getSystemDateAndTime(device: device)
 //        }
-        Engine.shared.getDeviceComponent()?.getTime()
+        if let device = Engine.shared.getDeviceComponent()?.devices.first {
+            device.set(username: "admin", password: "vivasvnpt124")
+            Engine.shared.getDeviceComponent()?.getProfiles(for: device)
+        }
     }
 
 }

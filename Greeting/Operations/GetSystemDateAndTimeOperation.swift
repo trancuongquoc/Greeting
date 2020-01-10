@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetSystemDateAndTimeOperation: ONVIFServiceOperation {
+class GetSystemDateAndTimeOperation: OnvifHTTPOperation {
     override func buildRequest() -> Data? {
         let soap =
         """

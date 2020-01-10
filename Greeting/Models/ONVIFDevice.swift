@@ -21,12 +21,17 @@ public enum ONVIFDeviceService {
 
 public class ONVIFDevice {
     
-    private var username = ""
-    private var password = ""
+    var username = ""
+    var password = ""
     
     public var hardware: String = ""
     public var xAddr: String = ""
     public var profiles = [Profile]()
+    
+    public func set(username: String, password: String) {
+        self.username = username
+        self.password = password
+    }
     
     public func set(username: String) {
         self.username = username
