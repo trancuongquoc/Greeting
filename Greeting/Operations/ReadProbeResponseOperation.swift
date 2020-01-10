@@ -42,11 +42,11 @@ class ReadProbeResponseOperation: BaseXMLOperation {
         }
     }
     
-    override func parserDidStartDocument(_ parser: XMLParser) {
+    func parserDidStartDocument(_ parser: XMLParser) {
         
     }
     
-    override func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         if elementName.contains("ProbeMatch") {
             self.isProbeMatch = true
         }
@@ -68,7 +68,7 @@ class ReadProbeResponseOperation: BaseXMLOperation {
         }
     }
     
-    override func parser(_ parser: XMLParser, foundCharacters string: String) {
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
         guard !string.isEmpty else {
             return
         }
@@ -124,7 +124,7 @@ class ReadProbeResponseOperation: BaseXMLOperation {
         self.currentElement = ""
     }
     
-    override func parserDidEndDocument(_ parser: XMLParser) {
+    func parserDidEndDocument(_ parser: XMLParser) {
         if !self.isProbeMatch {
             self.processReply(reply: nil, type: 1, errMsg: "Not a Probe Match.")
         } else {

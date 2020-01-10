@@ -33,20 +33,4 @@ public class BaseXMLOperation: BaseOperation, XMLParserDelegate {
         
         self.parse(requestData)
     }
-    
-    open func parserDidStartDocument(_ parser: XMLParser) {
-        
-    }
-    
-    open func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        
-    }
-    
-    open func parser(_ parser: XMLParser, foundCharacters string: String) {
-
-    }
-    
-    open func parserDidEndDocument(_ parser: XMLParser) {
-        
-    }
 }
