@@ -15,10 +15,15 @@ open class BaseOperation: Operation {
     public lazy var event_success : String = "success_\(self.uid)"
     public lazy var event_timeOut : String = "time_out_\(self.uid)"
     
+    public var theClassName: String {
+        
+        return NSStringFromClass(self.classForCoder)
+    }
+
     required override public init() {
         super.init()
     }
-    
+        
     //MARK: - ready state
     override open func start() {
         
@@ -30,6 +35,7 @@ open class BaseOperation: Operation {
         if isCancelled {
             return
         }
+        
     }
     
         //MARK: - Fire operation

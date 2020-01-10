@@ -9,9 +9,7 @@
 import Foundation
 
 class ReadProbeResponseOperation: BaseXMLOperation {
-    
-    public var data: Data?
-    
+        
     private var currentElement = ""
     private var messageID: String = ""
     private var relatedTo: String = ""
@@ -19,10 +17,6 @@ class ReadProbeResponseOperation: BaseXMLOperation {
     private var hardware: String = ""
     private var xAddr: String = ""
     private var isProbeMatch = false
-    
-    override func buildRequest() -> Data? {
-        return data
-    }
     
     override func processReply(reply: Any?, type: Int, errMsg: String?) {
         if type == 0 {

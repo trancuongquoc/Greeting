@@ -14,6 +14,11 @@ public struct EventName {
         public static let udp_did_receive_probematch: String = "udp_did_receive_probematch"
         public static let udp_did_recognize_onvif_device: String = "udp_did_recognize_onvif_device"
     }
+    
+    public struct http {
+        public static let did_update_device_profiles: String = "did_update_device_profiles"        
+    }
+    
 }
 public struct Event {
     public var autoDelete : Bool = false
@@ -34,11 +39,11 @@ open class Events : Component  {
     }
     
     init() {
-         listeners = Dictionary<String, Dictionary<String,Event>>()
+        listeners = Dictionary<String, Dictionary<String,Event>>()
     }
     
     public func start() {
-       debugPrint("EventComponent Did Start")
+        debugPrint("EventComponent Did Start")
     }
     
     public func stop() {

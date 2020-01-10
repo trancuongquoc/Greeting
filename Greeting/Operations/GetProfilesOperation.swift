@@ -41,14 +41,15 @@ class GetProfilesOperation: OnvifHTTPOperation {
         </s:Envelope>
         """
         
-        print(soap)
+//        print(soap)
         let data = soap.data(using: .utf8)
         return data
     }
     
     override func processReply(reply: Any?, errMsg: String?, error: HttpError?) {
-        let data = reply as? Data
-        let str = String(data: data!, encoding: .utf8)
-        print(str)
+//        let data = reply as? Data
+//        let str = String(data: data!, encoding: .utf8)
+//        print(str)
+        sendSuccessEvent(param: reply)
     }
 }

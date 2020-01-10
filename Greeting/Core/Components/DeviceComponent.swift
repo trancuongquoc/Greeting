@@ -28,9 +28,23 @@ public class DeviceComponent: Component {
     }
 
     func getProfiles(for device: ONVIFDevice) {
-        let op = GetProfilesOperation()
-        op.device = device
-        op.fire()
+        let fetch = GetProfilesOperation()
+        fetch.device = device
+        
+        let parse = ParseProfilesOperation()
+        
+        let adapter = BlockOperation {
+            parse.data = fetch.replyData
+            parse.device = fetch.device
+        }
+        
+        adapter.addDependency(fetch)
+        parse.addDependency(adapter)
+        
+        Engine.shared.getOperationComponent()?.enqueue(operation: fetch)
+        Engine.shared.getOperationComponent()?.operationQueue.addOperation(adapter)
+        Engine.shared.getOperationComponent()?.enqueue(operation: parse)
     }
+    
     
 }

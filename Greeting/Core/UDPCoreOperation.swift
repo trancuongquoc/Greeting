@@ -12,10 +12,9 @@ open class UDPCoreOperation: BaseOperation {
     
     public var type : String = ""
     public var replyData : Any?
-    
-    public var theClassName: String {
         
-        return NSStringFromClass(self.classForCoder)
+    public class func getClassName() -> String{
+        return NSStringFromClass(self)
     }
     
     required public init() {
@@ -23,10 +22,7 @@ open class UDPCoreOperation: BaseOperation {
         self.type = self.requestType()
     }
     
-    
-    public class func getClassName() -> String{
-        return NSStringFromClass(self)
-    }
+
     
     open func endpointAddress() -> String? {
         return nil
@@ -66,7 +62,6 @@ open class UDPCoreOperation: BaseOperation {
     
     
     override open func main() {
-        
         if self.replyData == nil {
             let requestData = self.onDataSend()
             
@@ -84,6 +79,8 @@ open class UDPCoreOperation: BaseOperation {
         } else {
             self.onReplyRequest(requestType: self.type, replyType: 0, replyData: replyData)
         }
+        
+        debugPrint(theClassName)
     }
     
 }

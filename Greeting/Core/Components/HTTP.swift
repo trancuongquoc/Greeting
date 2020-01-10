@@ -107,10 +107,33 @@ open class HTTP : NSObject, Component,URLSessionTaskDelegate,URLSessionDataDeleg
             request.httpBody = params
         }
         
-        let task = self.session.dataTask(with: request)
-        self.listTaskSuccess[task] = success
-        self.listTaskFailure[task] = failure
-        task.resume()
+                let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
+//                    print(response as Any)
+                    if let HTTPResponse = response as? HTTPURLResponse {
+                        let statusCode = HTTPResponse.statusCode
+                        
+                        if statusCode == 200 {
+                            if data != nil {
+                                success(data!)
+                            }
+                        }
+                        
+                    }
+                    
+        //            let reply = String(data: data!, encoding: .utf8)
+        //            print(reply)
+                    
+                    
+                    if error != nil {
+                        failure(error?.localizedDescription, HttpError.unknow_error)
+                    }
+                })
+                task.resume()
+
+//        let task = self.session.dataTask(with: request)
+//        self.listTaskSuccess[task] = success
+//        self.listTaskFailure[task] = failure
+//        task.resume()
 
     }
     
@@ -119,34 +142,37 @@ open class HTTP : NSObject, Component,URLSessionTaskDelegate,URLSessionDataDeleg
     open func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
     }
     
-    open func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        
-        guard let httpResponse = dataTask.response as? HTTPURLResponse else {
-            // Error
-            return
-        }
-        
-        if(httpResponse.statusCode == 200){ // ok
- 
-            if let cb = self.listTaskSuccess[dataTask]{
-                cb(data)
-                self.listTaskSuccess.removeValue(forKey: dataTask)
-                self.listTaskFailure.removeValue(forKey: dataTask)
-            }
-            
-        }else{
-            if let cb = self.listTaskFailure[dataTask]{
-                if(dataTask.error != nil){
-                    cb(dataTask.error?.localizedDescription, dataTask.error as? HttpError)
-                }else{
-                    cb(self.statusCodesMessage[httpResponse.statusCode],HttpError.unknow_error)
-                }
-                self.listTaskSuccess.removeValue(forKey: dataTask)
-                self.listTaskFailure.removeValue(forKey: dataTask)
-            }
-        }
-        
-    }
+//    open func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+//        
+//        guard let httpResponse = dataTask.response as? HTTPURLResponse else {
+//            // Error
+//            return
+//        }
+//        
+//        if(httpResponse.statusCode == 200){ // ok
+//            //        let data = reply as? Data
+//                    let str = String(data: data, encoding: .utf8)
+//                    print(str)
+//
+//            if let cb = self.listTaskSuccess[dataTask]{
+//                cb(data)
+//                self.listTaskSuccess.removeValue(forKey: dataTask)
+//                self.listTaskFailure.removeValue(forKey: dataTask)
+//            }
+//            
+//        }else{
+//            if let cb = self.listTaskFailure[dataTask]{
+//                if(dataTask.error != nil){
+//                    cb(dataTask.error?.localizedDescription, dataTask.error as? HttpError)
+//                }else{
+//                    cb(self.statusCodesMessage[httpResponse.statusCode],HttpError.unknow_error)
+//                }
+//                self.listTaskSuccess.removeValue(forKey: dataTask)
+//                self.listTaskFailure.removeValue(forKey: dataTask)
+//            }
+//        }
+//        
+//    }
     open func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         task.cancel()
         if(error != nil){

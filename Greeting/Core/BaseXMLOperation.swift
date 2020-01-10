@@ -10,9 +10,8 @@ import Foundation
 
 public class BaseXMLOperation: BaseOperation, XMLParserDelegate {
     
-    open func buildRequest() -> Data?{
-        fatalError("Subclasses need to implement the `buildRequest()` method.")
-    }
+    var data: Data?
+    var error: Error?
     
     private func parse(_ data: Data) {
         let parser = XMLParser(data: data)
@@ -26,11 +25,11 @@ public class BaseXMLOperation: BaseOperation, XMLParserDelegate {
     }
     
     override open func main() {
-        guard let requestData = self.buildRequest() else {
-            self.processReply(reply: nil, type: 1, errMsg: "XML: No request data.")
-            return
+        guard let requestData = self.data else {
+            fatalError("XML no data")
         }
         
         self.parse(requestData)
+        debugPrint(self.theClassName)
     }
 }

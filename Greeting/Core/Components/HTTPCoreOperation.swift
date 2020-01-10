@@ -11,12 +11,36 @@ import Foundation
 class HTTPCoreOperation: BaseOperation {
     
     public var requestBuildData : Data?
-    
-    
+    public var replyData : Data?
+
     required public init() {
         super.init()
         
     }
+    
+    enum OperationState : Int {
+        case ready
+        case executing
+        case finished
+    }
+    
+    // default state is ready (when the operation is created)
+    private var state : OperationState = .ready {
+        willSet {
+            self.willChangeValue(forKey: "isExecuting")
+            self.willChangeValue(forKey: "isFinished")
+        }
+        
+        didSet {
+            self.didChangeValue(forKey: "isExecuting")
+            self.didChangeValue(forKey: "isFinished")
+        }
+    }
+    
+    override var isReady: Bool { return state == .ready }
+    override var isExecuting: Bool { return state == .executing }
+    override var isFinished: Bool { return state == .finished }
+
     open func httpMethod() -> HTTPMethods {
         return .POST
     }
@@ -58,6 +82,7 @@ class HTTPCoreOperation: BaseOperation {
     }
     
     override open func main() {
+        
         let requestData = self.buildRequest()
         let url = self.requestURL()
         let method = self.httpMethod()
@@ -67,7 +92,9 @@ class HTTPCoreOperation: BaseOperation {
                 DispatchQueue.main.async {
                     switch self.httpParserOnSuccess(){
                     case .DEFAULT :
+                        self.replyData = data
                         self.processReply(reply: data, errMsg: nil, error: nil)
+                        self.state = .finished
                     case .JSON:
                         self.processReply(reply: self.json(with: data), errMsg: nil, error: nil)
                     case .TEXT:
@@ -84,6 +111,8 @@ class HTTPCoreOperation: BaseOperation {
             }
             
         }
+        
+        debugPrint(theClassName)
     }
     
 }

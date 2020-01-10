@@ -64,6 +64,9 @@ class ViewController: UIViewController {
 //        if let device = Engine.shared.getDeviceComponent()?.devices.first {
 //            Engine.shared.getDeviceComponent()?.getSystemDateAndTime(device: device)
 //        }
+        Engine.shared.getEventComponent()?.listenTo(with: EventName.http.did_update_device_profiles, event: Event(with: { (aaa) in
+            print(Engine.shared.getDeviceComponent()?.devices.first!.profiles)
+        }))
         if let device = Engine.shared.getDeviceComponent()?.devices.first {
             device.set(username: "admin", password: "vivasvnpt124")
             Engine.shared.getDeviceComponent()?.getProfiles(for: device)
